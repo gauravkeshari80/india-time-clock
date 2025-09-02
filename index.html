@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="stlye.css">
+</head>
+<body>
+   
+    <div class="clock">
+        
+        <div class="center-nut"> </div>
+        <div class="center-nut2"> </div>
+        <div class="indicator">
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+        </div>
+        <div class="sec-hand">
+            <div class="sec"></div>
+        </div>
+        <div class="min-hand">
+            <div class="min"></div>
+        </div>
+        <div class="hr-hand">
+            <div class="hr"></div>
+        </div>
+    </div>
+    <script>
+        const sec = document.querySelector('.sec');
+        const min = document.querySelector('.min');
+        const  hr = document.querySelector('.hr');
+        setInterval(() => {
+            let day = new Date(); 	 
+            //   !  se current time liya ja raha hai.
+            let ss = day.getSeconds() * 6;
+//          • 	Seconds, minutes, aur hours ko degrees mein convert kiya ja raha hai:
+//          • 	Seconds × 6 → kyunki 360° / 60 seconds = 6° per second
+//          • 	Minutes × 6 → same logic
+//          • 	Hours × 30 + (minutes / 2) → 360° / 12 hours = 30° per hour + minute adjustment
+            let mm = day.getMinutes() * 6;
+            let hh = day.getHours() * 30 + (day.getMinutes()/2);
+            sec.style.transform = `rotateZ(${ss}deg)`;
+            min.style.transform = `rotateZ(${mm}deg)`;
+            hr.style.transform = `rotateZ(${hh}deg)`;
+        }, 1000);
+    </script>
+</body>
+</html>
